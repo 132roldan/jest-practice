@@ -19,8 +19,14 @@ class Cookbook {
     delete this.recipes[name];
   }
 }
+module.exports = { Cookbook };
 
+const myCookbook = new Cookbook();
 
+myCookbook.addRecipe('hotdog', ['meat', 'bread']);
+myCookbook.addRecipe('hotdog2', ['meat2', 'bread2'])
 
-
+console.log(myCookbook.recipes);
+console.log(myCookbook.listRecipes());
+console.log(myCookbook.getRecipe('hotdog'));
 module.exports = { Cookbook };
