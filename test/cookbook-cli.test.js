@@ -21,7 +21,7 @@ describe('CookbookCli', () => {
       myCookbookCli.add('hotdog', ['meat', 'bread'])
 
       const message = myCookbookCli.list();
-
+       
       expect(message).toEqual('You have the following recipes: hotdog')
 
      
@@ -48,9 +48,27 @@ describe('CookbookCli', () => {
 
       myCookbookCli.add('hotdog', ['meat', 'bread'])
       const message  = myCookbookCli.remove('hotdog')
+      const dell = myCookbookCli.list();
+      console.log(dell);
       
       
       expect(message).toEqual('Successfully removed the following recipe: hotdog')
+      
+    });
+  });
+
+   
+  describe('Verify if current cookbook is empty', () => {
+    test('should accept the cookbook name and display the correct message', () => {
+      const myCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myCookbook);
+
+      
+      const message  = myCookbookCli.isEmpty()
+      
+      
+      
+      expect(message).toEqual('this cookbook is empty')
       
     });
   });

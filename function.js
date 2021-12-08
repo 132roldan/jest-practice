@@ -1,9 +1,10 @@
+const { Cookbook } = require('./src/cookbook');
 class CookbookCli {
   constructor(cookbook) {
     this.cookbook = cookbook;
   }
 
-  run(command, ...args) { 
+  run(command, ...args) {
     switch (command) {
       case 'list': return this.list();
       case 'isEmpty': return this.isEmpty();
@@ -32,11 +33,16 @@ class CookbookCli {
     return `Successfully removed the following recipe: ${name}`;
   }
 
-  isEmpty() {
-    if(this.cookbook.empty()){
-      return `this cookbook is empty`
+  isEmpty(name) {
+    this.cookbook.isEmpty()
+      
     }
-  }
+  
 }
 
-module.exports = { CookbookCli };
+  
+
+
+
+
+ 
