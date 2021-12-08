@@ -72,4 +72,20 @@ describe('CookbookCli', () => {
       
     });
   });
+
+  describe('Verify if current cookbook already has the current recipe', () => {
+    test('should accept the recipe name and display the correct message', () => {
+      const myCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myCookbook);
+
+      myCookbookCli.add('hotdog', ['meat', 'bread'])
+      
+      const message = myCookbookCli.add('hotdog', ['meat', 'bread'])
+      
+      
+      
+      expect(message).toEqual('The recipe of hotdog already exists')
+      
+    });
+  });
 });

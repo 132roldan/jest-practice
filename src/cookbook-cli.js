@@ -6,6 +6,7 @@ class CookbookCli {
   run(command, ...args) { 
     switch (command) {
       case 'list': return this.list();
+      case 'exist': return this.exist(...args);
       case 'isEmpty': return this.isEmpty();
       case 'add': return this.add(...args);
       case 'get': return this.get(...args);
@@ -17,10 +18,16 @@ class CookbookCli {
   list() {
     return `You have the following recipes: ${this.cookbook.listRecipes().join(',')}`;
   }
-
+  
   add(name, ingredients) {
-    this.cookbook.addRecipe(name, ingredients);
-    return `Successfully added the following recipe: ${name}`;
+
+    if (Object.keys(this.cookbook.recipes).includes(name)) {
+      console.warn(`The recipe of ${name} already exists`)
+      return `The recipe of ${name} already exists`
+    } else {
+      this.cookbook.addRecipe(name, ingredients);
+      return `Successfully added the following recipe: ${name}`;
+    }
   }
 
   get(name) {
@@ -37,6 +44,7 @@ class CookbookCli {
       return `this cookbook is empty`
     }
   }
+  
 }
 
 module.exports = { CookbookCli };
