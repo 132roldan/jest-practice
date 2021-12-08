@@ -31,7 +31,12 @@ class CookbookCli {
   }
 
   get(name) {
-    return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
+    if (Object.keys(this.cookbook.recipes).includes(name)) {
+      return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
+    } else {
+      console.warn(`The recipe of ${name} does not exist in this cookbook`)
+      return `The recipe of ${name} does not exist in this cookbook`
+    }
   }
 
   remove(name) {

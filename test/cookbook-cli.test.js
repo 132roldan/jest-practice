@@ -88,4 +88,20 @@ describe('CookbookCli', () => {
       
     });
   });
+
+  describe('Verify if the program can handle the error message if I try retrieve a recipe that does not exist in the current cookbook', () => {
+    test('should accept the recipe name and display the correct message', () => {
+      const myCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myCookbook);
+
+      
+      
+      const message = myCookbookCli.get('hotdog', ['meat', 'bread'])
+      
+      
+      
+      expect(message).toEqual('The recipe of hotdog does not exist in this cookbook')
+      
+    });
+  });
 });
