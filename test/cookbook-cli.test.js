@@ -96,11 +96,27 @@ describe('CookbookCli', () => {
 
       
       
-      const message = myCookbookCli.get('hotdog', ['meat', 'bread'])
+      const message = myCookbookCli.get('hotdog')
       
       
       
       expect(message).toEqual('The recipe of hotdog does not exist in this cookbook')
+      
+    });
+  });
+
+  describe('Verify if the program can handle the error message if I try delete a recipe that does not exist in the current cookbook', () => {
+    test('should accept the recipe name and display the correct message', () => {
+      const myCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myCookbook);
+
+      
+      
+      const message = myCookbookCli.remove('hotdog')
+      
+      
+      
+      expect(message).toEqual('The recipe of hotdog does not exist in this cookbook so...You cant delete it')
       
     });
   });

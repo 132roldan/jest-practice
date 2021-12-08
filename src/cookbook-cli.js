@@ -40,10 +40,15 @@ class CookbookCli {
   }
 
   remove(name) {
+    if (Object.keys(this.cookbook.recipes).includes(name)) {
     this.cookbook.removeRecipe(name);
     return `Successfully removed the following recipe: ${name}`;
-  }
+    }else{
+      console.warn(`The recipe of ${name} does not exist in this cookbook so...You cant delete it`)
+      return `The recipe of ${name} does not exist in this cookbook so...You cant delete it`
 
+    }
+  }  
   isEmpty() {
     if(this.cookbook.empty()){
       return `this cookbook is empty`
